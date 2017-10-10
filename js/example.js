@@ -1,18 +1,8 @@
-// Part 1: Create the hotel object and write out the offer details
-
-const hotel = {
-    name: "Park",
-    roomRate: 240, // amount in dollars
-    discount: 15,  // percentage amount
-    offerPrice: (roomRate, discount) => roomRate * ((100 - discount) / 100)
-};
-
-// Part 2: Calculate and Write out the expiry details.
 offerExpires = (today) => {
     // Add 7 days time (added in milliseconds)
     let weekFromToday = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
     let parsedWeekFromToday = parseWeekFromToday(weekFromToday);
-    let expireMessage = createExpireMessage(parsedWeekFromToday);
+    return createExpireMessage(parsedWeekFromToday);
 }
 
 parseWeekFromToday = (weekFromToday) => {
@@ -38,8 +28,16 @@ createExpireMessage = (parsedWeekFromToday) => {
     let month = parsedWeekFromToday[2];
     let year = parsedWeekFromToday[3];
 
-    return "Offer expires next" + day + '<br />(' + date + ' ' + month + ' ' + year + ')';
+    return "Offer expires next " + day + '<br />(' + date + ' ' + month + ' ' + year + ')';
 } 
+
+// Do the DOM manipulation here
+const hotel = {
+    name: "Park",
+    roomRate: 240, // amount in dollars
+    discount: 15,  // percentage amount
+    offerPrice: (roomRate, discount) => roomRate * ((100 - discount) / 100)
+};
 
 const hotelName = document.getElementById("hotelName");
 hotelName.textContent = hotel.name;
